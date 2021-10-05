@@ -10,15 +10,14 @@ from ledger.transaction import (
 )
 
 
-def test_get_transactions_from_file(mocker, tmp_path):
+def test_get_transactions_from_file(mocker, tmp_csv_factory):
     from_row_mock = mocker.patch.object(
         Transaction, "from_row", side_effect=["T-1", "T-2", "T-3"]
     )
-    csvfile = tmp_path / "test.csv"
-    csvfile.write_text(
-        "2015-01-16,john,mary,125.00\n"
-        "2015-01-17,john,supermarket,20.00\n"
-        "2015-01-17,mary,insurance,100.00\n"
+    csvfile = tmp_csv_factory(
+        "2015-01-16,john,mary,125.00",
+        "2015-01-17,john,supermarket,20.00",
+        "2015-01-17,mary,insurance,100.00",
     )
 
     transactions = get_transactions_from_file(csvfile)
