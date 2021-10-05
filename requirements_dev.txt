@@ -8,6 +8,7 @@ isort==5.9.3
 mypy==0.910
 pip==21.2.4
 pylint==2.11.1
+pytest-mock==3.6.1
 pytest==6.2.5
 Sphinx==4.2.0
 tox==3.24.4
