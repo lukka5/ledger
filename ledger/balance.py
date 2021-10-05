@@ -10,9 +10,9 @@ class Balance(BaseModel):
     total: Decimal = Decimal(0)
 
     def apply_transaction(self, transaction: Transaction) -> None:
+        if not transaction.involves(self.entity):
+            raise IrrelevantTransactionError(self.entity, transaction)
         if self.entity == transaction.sender:
             self.total -= transaction.amount
-        elif self.entity == transaction.recipient:
+        if self.entity == transaction.recipient:
             self.total += transaction.amount
-        else:
-            raise IrrelevantTransactionError(self.entity, transaction)
