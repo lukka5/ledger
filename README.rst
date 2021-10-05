@@ -71,6 +71,23 @@ We can load it and calculate the balance for a entity at a given date:
     balance.amount  # Decimal('25.00')
 
 
+Comments
+--------
+
+- I tried to do clean code and separate modules
+- Kept the Ledger interface as simple as possible so I would have time to write
+  some tests
+- I did unit tests and also some functional tests for the main ``Ledger``
+  functionality
+- Didn't have time to write some proper docs
+- Didn't used comments as the code was simple but I did used type hint
+  annotations and ``isort``, ``black``, ``pylint``, ``flake8`` while developing
+- Used ``pydantic`` to validate and coerce the rows of the transaction file
+- There's some sample transactions files and usage script under ``samples/``
+- Would've been nice to extend the functionality and use some database for storing
+  the transactions so the queries are more efficient
+
+
 Credits
 -------
 
