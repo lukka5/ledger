@@ -9,7 +9,6 @@ with open("HISTORY.rst", encoding="UTF-8") as history_file:
     history = history_file.read()
 
 requirements = [
-    "Click>=8.0",
     "pydantic>=1.8",
 ]
 
@@ -34,11 +33,6 @@ setup(
         "Ledger - Keep track of financial transactions"
         " between different parties, people and organisations.",
     ),
-    entry_points={
-        "console_scripts": [
-            "ledger=ledger.cli:main",
-        ],
-    },
     include_package_data=True,
     install_requires=requirements,
     keywords="ledger",
