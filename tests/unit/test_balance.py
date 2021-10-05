@@ -35,7 +35,8 @@ class TestBalance:
 
     def test_apply_transaction_irrelevant(self, mocker):
         balance = Balance(entity="mike", total="1.123")
-        transaction_mock = mocker.Mock(sender="other", recipient="other")
+        transaction_mock = mocker.Mock()
+        transaction_mock.involves.return_value = False
 
         with pytest.raises(IrrelevantTransactionError):
             balance.apply_transaction(transaction_mock)
