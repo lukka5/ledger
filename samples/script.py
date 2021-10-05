@@ -3,12 +3,11 @@ from datetime import date
 from ledger import Ledger, Transaction
 
 ledger = Ledger()
-ledger.load_transactions("full.csv")
-transactions = [
+ledger.load_from_file("full.csv")
+ledger.transactions += [
     Transaction(date="2015-01-18", sender="mary", recipient="john", amount="52.2"),
     Transaction(date="2015-01-18", sender="john", recipient="mary", amount="21"),
 ]
-ledger.load_transactions(transactions)
 
 print("Balance for Mary -->", ledger.get_balance("mary").total)
 print("Balance for John -->", ledger.get_balance("john").total)

@@ -12,19 +12,8 @@ class Ledger:
     def __init__(self):
         self.transactions = []
 
-    def load_transaction(self, transaction: Transaction) -> None:
-        self.transactions.append(transaction)
-
-    def load_transactions(
-        self, source: Union[str, PurePath, List[Transaction]]
-    ) -> None:
-        transactions = (
-            get_transactions_from_file(source)
-            if isinstance(source, (str, PurePath))
-            else source
-        )
-        for transaction in transactions:
-            self.load_transaction(transaction)
+    def load_from_file(self, path: Union[str, PurePath]) -> None:
+        self.transactions += get_transactions_from_file(path)
 
     def get_balance(self, entity: str, at: date = date.max) -> Balance:
         balance = Balance(entity=entity)
