@@ -30,7 +30,46 @@ Ledger - Keep track of financial transactions between different parties, people 
 Features
 --------
 
-* TODO
+* Load transaction in CSV format
+* Calculate the balance for an entity at any given date
+
+
+Install
+-------
+
+To install it first clone this repo and then::
+
+    pip setup.py install
+
+Run tests with::
+
+    pytest
+
+
+Usage
+-----
+
+Given a sample CSV file ``expenses.csv`` with the following transactions:
+
+.. code-block:: shell
+
+    2015-01-16,john,mary,125.00
+    2015-01-17,john,supermarket,20.00
+    2015-01-17,mary,insurance,100.00
+
+We can load it and calculate the balance for a entity at a given date:
+
+.. code-block:: python
+
+    from datetime import date
+
+    from ledger import Ledger
+
+    ledger = Ledger()
+    ledger.load_from_file('expenses.csv')
+    balance = ledger.get_balance('mary', date(2015, 1, 17))
+    balance.amount  # Decimal('25.00')
+
 
 Credits
 -------
