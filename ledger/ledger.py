@@ -1,6 +1,6 @@
 from datetime import date
 from pathlib import PurePath
-from typing import List, Optional, Union
+from typing import List, Union
 
 from ledger.balance import Balance
 from ledger.transaction import Transaction, get_transactions_from_file
@@ -26,9 +26,9 @@ class Ledger:
         for transaction in transactions:
             self.load_transaction(transaction)
 
-    def get_balance(self, entity: str, at: Optional[date] = None) -> Balance:
+    def get_balance(self, entity: str, at: date = date.max) -> Balance:
         balance = Balance(entity=entity)
         for transaction in self.transactions:
-            if transaction.involves(entity):
+            if transaction.involves(entity) and transaction.date <= at:
                 balance.apply_transaction(transaction)
         return balance
