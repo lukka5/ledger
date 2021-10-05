@@ -1,49 +1,55 @@
 #!/usr/bin/env python
 
-"""The setup script."""
-
 from setuptools import setup, find_packages
 
-with open('README.rst') as readme_file:
+with open("README.rst", encoding="UTF-8") as readme_file:
     readme = readme_file.read()
 
-with open('HISTORY.rst') as history_file:
+with open("HISTORY.rst", encoding="UTF-8") as history_file:
     history = history_file.read()
 
-requirements = ['Click>=7.0', ]
+requirements = [
+    "Click>=8.0",
+    "pydantic>=1.8",
+]
 
-test_requirements = ['pytest>=3', ]
+test_requirements = [
+    "pytest>=3",
+]
 
 setup(
     author="Lucas Godoy",
-    author_email='2lucasg@gmail.com',
-    python_requires='>=3.6',
+    author_email="2lucasg@gmail.com",
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
-        'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT License',
-        'Natural Language :: English',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
+        "Development Status :: 2 - Pre-Alpha",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: MIT License",
+        "Natural Language :: English",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
     ],
-    description="Ledger - Keep track of financial transactions between different parties, people and organisations.",
+    description=(
+        "Ledger - Keep track of financial transactions"
+        " between different parties, people and organisations.",
+    ),
     entry_points={
-        'console_scripts': [
-            'ledger=ledger.cli:main',
+        "console_scripts": [
+            "ledger=ledger.cli:main",
         ],
     },
-    install_requires=requirements,
-    license="MIT license",
-    long_description=readme + '\n\n' + history,
     include_package_data=True,
-    keywords='ledger',
-    name='ledger',
-    packages=find_packages(include=['ledger', 'ledger.*']),
-    test_suite='tests',
+    install_requires=requirements,
+    keywords="ledger",
+    license="MIT license",
+    long_description=readme + "\n\n" + history,
+    name="ledger",
+    packages=find_packages(include=["ledger", "ledger.*"]),
+    python_requires=">=3.6",
+    test_suite="tests",
     tests_require=test_requirements,
-    url='https://github.com/lukka5/ledger',
-    version='0.1.0',
+    url="https://github.com/lukka5/ledger",
+    version="0.1.0",
     zip_safe=False,
 )
